@@ -4,9 +4,10 @@ import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-  site: "sweetchild-landing.vercel.app",
+  site: "https://sweetchild-landing.vercel.app",
   vite: {
     plugins: [tailwindcss()],
   },
   integrations: [sitemap()],
 });
+
