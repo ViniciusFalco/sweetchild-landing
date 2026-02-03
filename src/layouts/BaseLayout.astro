@@ -1,0 +1,43 @@
+---
+import "../styles/global.css";
+
+const {
+  title,
+  description,
+  canonical,
+  ogImage,
+  jsonLd,
+  noindex = false,
+} = Astro.props;
+
+const canonicalUrl = canonical ?? Astro.url.href;
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    {noindex && <meta name="robots" content="noindex,nofollow" />}
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+
+    <!-- Schema.org JSON-LD -->
+    {jsonLd && (
+      <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    )}
+  </head>
+
+  <body class="bg-white text-gray-900 antialiased">
+    <slot />
+  </body>
+</html>
