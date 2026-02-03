@@ -4,7 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-  site: "http://localhost:4321",
+  site: "sweetchild-landing.vercel.app",
   vite: {
     plugins: [tailwindcss()],
   },
